@@ -1,0 +1,488 @@
+Iteration #1:
+Search Depth #0
+Evaluation Value :13
+5 1 2 4 
+9 6 3 8 
+13 15 10 11 
+14 0 7 12 
+
+Iteration #2:
+Search Depth #1
+Evaluation Value :13
+5 1 2 4 
+9 6 3 8 
+13 15 10 11 
+0 14 7 12 
+
+Iteration #3:
+Search Depth #2
+Evaluation Value :13
+5 1 2 4 
+9 6 3 8 
+0 15 10 11 
+13 14 7 12 
+
+Iteration #4:
+Search Depth #3
+Evaluation Value :13
+5 1 2 4 
+0 6 3 8 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #5:
+Search Depth #4
+Evaluation Value :13
+0 1 2 4 
+5 6 3 8 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #6:
+Search Depth #5
+Evaluation Value :13
+1 0 2 4 
+5 6 3 8 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #7:
+Search Depth #6
+Evaluation Value :13
+1 2 0 4 
+5 6 3 8 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #8:
+Search Depth #7
+Evaluation Value :13
+1 2 3 4 
+5 6 0 8 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #9:
+Search Depth #3
+Evaluation Value :14
+5 1 2 4 
+9 6 3 8 
+15 0 10 11 
+13 14 7 12 
+
+Iteration #10:
+Search Depth #1
+Evaluation Value :14
+5 1 2 4 
+9 6 3 8 
+13 0 10 11 
+14 15 7 12 
+
+Iteration #11:
+Search Depth #1
+Evaluation Value :14
+5 1 2 4 
+9 6 3 8 
+13 15 10 11 
+14 7 0 12 
+
+Iteration #12:
+Search Depth #2
+Evaluation Value :14
+5 1 2 4 
+9 6 3 8 
+13 10 0 11 
+14 15 7 12 
+
+Iteration #13:
+Search Depth #2
+Evaluation Value :14
+5 1 2 4 
+9 6 3 8 
+13 15 10 11 
+14 7 12 0 
+
+Iteration #14:
+Search Depth #4
+Evaluation Value :14
+5 1 2 4 
+9 6 3 8 
+15 10 0 11 
+13 14 7 12 
+
+Iteration #15:
+Search Depth #8
+Evaluation Value :14
+1 2 3 4 
+5 6 10 8 
+9 15 0 11 
+13 14 7 12 
+
+Iteration #16:
+Search Depth #3
+Evaluation Value :14
+5 1 2 4 
+9 6 3 8 
+13 10 11 0 
+14 15 7 12 
+
+Iteration #17:
+Search Depth #4
+Evaluation Value :13
+5 1 2 4 
+9 6 3 8 
+13 10 11 12 
+14 15 7 0 
+
+Iteration #18:
+Search Depth #5
+Evaluation Value :14
+5 1 2 4 
+9 6 3 8 
+15 10 11 0 
+13 14 7 12 
+
+Iteration #19:
+Search Depth #6
+Evaluation Value :13
+5 1 2 4 
+9 6 3 8 
+15 10 11 12 
+13 14 7 0 
+
+Iteration #20:
+Search Depth #9
+Evaluation Value :14
+1 2 3 4 
+5 6 10 8 
+9 15 11 0 
+13 14 7 12 
+
+Iteration #21:
+Search Depth #10
+Evaluation Value :13
+1 2 3 4 
+5 6 10 8 
+9 15 11 12 
+13 14 7 0 
+
+Iteration #22:
+Search Depth #7
+Evaluation Value :15
+1 2 4 0 
+5 6 3 8 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #23:
+Search Depth #3
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+13 10 7 11 
+14 15 0 12 
+
+Iteration #24:
+Search Depth #3
+Evaluation Value :15
+5 1 2 4 
+9 6 0 8 
+13 10 3 11 
+14 15 7 12 
+
+Iteration #25:
+Search Depth #7
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+15 10 11 12 
+13 14 0 7 
+
+Iteration #26:
+Search Depth #11
+Evaluation Value :15
+1 2 3 4 
+5 6 10 8 
+9 15 11 12 
+13 14 0 7 
+
+Iteration #27:
+Search Depth #4
+Evaluation Value :15
+5 1 2 4 
+6 0 3 8 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #28:
+Search Depth #2
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+13 15 0 11 
+14 7 10 12 
+
+Iteration #29:
+Search Depth #4
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+13 10 7 11 
+14 15 12 0 
+
+Iteration #30:
+Search Depth #8
+Evaluation Value :15
+1 2 3 4 
+5 0 6 8 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #31:
+Search Depth #2
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+0 13 10 11 
+14 15 7 12 
+
+Iteration #32:
+Search Depth #6
+Evaluation Value :15
+1 6 2 4 
+5 0 3 8 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #33:
+Search Depth #4
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+13 10 7 11 
+14 0 15 12 
+
+Iteration #34:
+Search Depth #5
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+13 10 11 12 
+14 15 0 7 
+
+Iteration #35:
+Search Depth #8
+Evaluation Value :15
+1 2 3 4 
+5 6 8 0 
+9 15 10 11 
+13 14 7 12 
+
+Iteration #36:
+Search Depth #9
+Evaluation Value :15
+1 2 3 4 
+5 6 10 8 
+9 0 15 11 
+13 14 7 12 
+
+Iteration #37:
+Search Depth #9
+Evaluation Value :15
+1 2 3 4 
+5 6 10 8 
+9 15 7 11 
+13 14 0 12 
+
+Iteration #38:
+Search Depth #5
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+13 10 7 11 
+0 14 15 12 
+
+Iteration #39:
+Search Depth #6
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+13 10 11 12 
+14 0 15 7 
+
+Iteration #40:
+Search Depth #10
+Evaluation Value :15
+1 2 3 4 
+5 6 10 8 
+9 15 7 11 
+13 14 12 0 
+
+Iteration #41:
+Search Depth #6
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+0 10 7 11 
+13 14 15 12 
+
+Iteration #42:
+Search Depth #7
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+13 10 11 12 
+0 14 15 7 
+
+Iteration #43:
+Search Depth #5
+Evaluation Value :15
+5 1 2 4 
+9 6 0 8 
+15 10 3 11 
+13 14 7 12 
+
+Iteration #44:
+Search Depth #7
+Evaluation Value :15
+5 1 2 4 
+0 6 3 8 
+9 10 7 11 
+13 14 15 12 
+
+Iteration #45:
+Search Depth #8
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+0 10 11 12 
+13 14 15 7 
+
+Iteration #46:
+Search Depth #5
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+15 10 7 11 
+13 14 0 12 
+
+Iteration #47:
+Search Depth #9
+Evaluation Value :15
+5 1 2 4 
+0 6 3 8 
+9 10 11 12 
+13 14 15 7 
+
+Iteration #48:
+Search Depth #6
+Evaluation Value :15
+5 1 2 4 
+9 6 3 8 
+15 10 7 11 
+13 14 12 0 
+
+Iteration #49:
+Search Depth #10
+Evaluation Value :15
+0 1 2 4 
+5 6 3 8 
+9 10 11 12 
+13 14 15 7 
+
+Iteration #50:
+Search Depth #8
+Evaluation Value :15
+0 1 2 4 
+5 6 3 8 
+9 10 7 11 
+13 14 15 12 
+
+Iteration #51:
+Search Depth #11
+Evaluation Value :15
+1 0 2 4 
+5 6 3 8 
+9 10 11 12 
+13 14 15 7 
+
+Iteration #52:
+Search Depth #9
+Evaluation Value :15
+1 0 2 4 
+5 6 3 8 
+9 10 7 11 
+13 14 15 12 
+
+Iteration #53:
+Search Depth #12
+Evaluation Value :15
+1 2 0 4 
+5 6 3 8 
+9 10 11 12 
+13 14 15 7 
+
+Iteration #54:
+Search Depth #10
+Evaluation Value :15
+1 2 0 4 
+5 6 3 8 
+9 10 7 11 
+13 14 15 12 
+
+Iteration #55:
+Search Depth #13
+Evaluation Value :15
+1 2 3 4 
+5 6 0 8 
+9 10 11 12 
+13 14 15 7 
+
+Iteration #56:
+Search Depth #11
+Evaluation Value :15
+1 2 3 4 
+5 6 0 8 
+9 10 7 11 
+13 14 15 12 
+
+Iteration #57:
+Search Depth #3
+Evaluation Value :15
+5 1 2 4 
+0 6 3 8 
+9 13 10 11 
+14 15 7 12 
+
+Iteration #58:
+Search Depth #12
+Evaluation Value :15
+1 2 3 4 
+5 6 7 8 
+9 10 0 11 
+13 14 15 12 
+
+Iteration #59:
+Search Depth #4
+Evaluation Value :15
+0 1 2 4 
+5 6 3 8 
+9 13 10 11 
+14 15 7 12 
+
+Iteration #60:
+Search Depth #13
+Evaluation Value :15
+1 2 3 4 
+5 6 7 8 
+9 10 11 0 
+13 14 15 12 
+
+Iteration #61:
+Search Depth #14
+Evaluation Value :15
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 15 0 
+
