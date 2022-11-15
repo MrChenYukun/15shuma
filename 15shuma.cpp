@@ -4,23 +4,22 @@
 #include <set>
 #include <string>
 using namespace std;
-ifstream in("testcase1.txt");
-ofstream out("testcaseAns1.txt");
+ifstream in("test\\testcase.txt");
+ofstream out("test\\testcaseIeteration.txt");
+ofstream outans("test\\testcaseAns.txt");
 int target[4][4] = {
     {1, 2, 3, 4},
     {5, 6, 7, 8},
     {9, 10, 11, 12},
     {13, 14, 15, 0},
 };
-//目标状态
 struct node {
-  int state[4][4];  //记录当前状态
-  int depth;        //记录搜索深度
-  int value;        //记录估价函数的值
+  int state[4][4];
+  int depth;
+  int value;
+  node *parent;
   bool operator<(const node a) const { return this->value > a.value; }
 };
-
-//通过和目标矩阵对比不一样的数量，计算估价函数
 int evaluate(node a) {
   int cnt = 0;
   for (int i = 0; i < 4; i++) {
@@ -30,7 +29,6 @@ int evaluate(node a) {
   }
   return cnt;
 }
-//转换成字符串，方便当前状态是否有重复出现
 string toString(node a) {
   string str;
   for (int i = 0; i < 4; i++) {
@@ -40,121 +38,131 @@ string toString(node a) {
   }
   return str;
 }
-//A星算法本体
-node AstarSearch(node start) {
+node *AstarSearch(node *start) {
   cout << "Astar Algorithm start" << endl;
+  cout << "Print Iterations to testcaseIteration.txt files." << endl;
 
   priority_queue<node> nodes;
-  nodes.push(start);
+  nodes.push(*start);
   set<string> maps;
-  maps.insert(toString(start));
+  maps.insert(toString(*start));
 
-  node curnode, nextnode;
+  node *curnode;
+  node *nextnode;
+
   string str;
   int vary;
   bool flag = false;
   int cnt = 0;
 
-  if (evaluate(curnode) != 0) {
+  if (evaluate(*start) != 0) {
     while (!nodes.empty()) {
-      curnode = nodes.top();
+      curnode = new node;
+      *curnode = nodes.top();
       nodes.pop();
 
       out << "Iteration #" << ++cnt << ":" << endl;
-      out << "Search Depth #" << curnode.depth << endl;
-      out << "Evaluation Value :" << curnode.value << endl;
+      out << "Search Depth #" << curnode->depth << endl;
+      out << "Evaluation Value :" << curnode->value << endl;
       for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-          out << curnode.state[i][j] << ' ';
+          out << curnode->state[i][j] << ' ';
         }
         out << endl;
       }
       out << endl;
 
-      if (cnt % 10000 == 0) {
-        cout << "Calculating Iteration " << cnt << "times...." << endl;
+      if (cnt % 100000 == 0) {
+        cout << "Calculating Iteration " << cnt << " times...." << endl;
       }
 
       for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-          if (curnode.state[i][j] == 0) {
-            //左右交换
+          if (curnode->state[i][j] == 0) {
             if (j > 0) {
-              nextnode = curnode;
-              nextnode.depth++;
-              nextnode.state[i][j] ^= nextnode.state[i][j - 1];
-              nextnode.state[i][j - 1] ^= nextnode.state[i][j];
-              nextnode.state[i][j] ^= nextnode.state[i][j - 1];
-              str = toString(nextnode);
+              nextnode = new node;
+              *nextnode = *curnode;
+              nextnode->depth++;
+              nextnode->parent = curnode;
+              nextnode->state[i][j] ^= nextnode->state[i][j - 1];
+              nextnode->state[i][j - 1] ^= nextnode->state[i][j];
+              nextnode->state[i][j] ^= nextnode->state[i][j - 1];
+              str = toString(*nextnode);
               if (maps.find(str) == maps.end()) {
                 maps.insert(str);
-                vary = evaluate(nextnode);
-                if (vary == 0) {//记录是否找到答案
+                vary = evaluate(*nextnode);
+                if (vary == 0) {
                   flag = true;
                   break;
                 } else {
-                  nextnode.value = nextnode.depth + vary;
-                  nodes.push(nextnode);
+                  nextnode->value = nextnode->depth + vary;
+                  nodes.push(*nextnode);
                 }
               }
             }
-            //上下交换
+
             if (i > 0) {
-              nextnode = curnode;
-              nextnode.depth++;
-              nextnode.state[i][j] ^= nextnode.state[i - 1][j];
-              nextnode.state[i - 1][j] ^= nextnode.state[i][j];
-              nextnode.state[i][j] ^= nextnode.state[i - 1][j];
-              str = toString(nextnode);
+              nextnode = new node;
+              *nextnode = *curnode;
+              nextnode->depth++;
+              nextnode->parent = curnode;
+              nextnode->state[i][j] ^= nextnode->state[i - 1][j];
+              nextnode->state[i - 1][j] ^= nextnode->state[i][j];
+              nextnode->state[i][j] ^= nextnode->state[i - 1][j];
+              str = toString(*nextnode);
               if (maps.find(str) == maps.end()) {
                 maps.insert(str);
-                vary = evaluate(nextnode);
+                vary = evaluate(*nextnode);
                 if (vary == 0) {
                   flag = true;
                   break;
                 } else {
-                  nextnode.value = nextnode.depth + vary;
-                  nodes.push(nextnode);
+                  nextnode->value = nextnode->depth + vary;
+                  nodes.push(*nextnode);
                 }
               }
             }
-            //上下交换
+
             if (i < 3) {
-              nextnode = curnode;
-              nextnode.depth++;
-              nextnode.state[i + 1][j] ^= nextnode.state[i][j];
-              nextnode.state[i][j] ^= nextnode.state[i + 1][j];
-              nextnode.state[i + 1][j] ^= nextnode.state[i][j];
-              str = toString(nextnode);
+              nextnode = new node;
+              *nextnode = *curnode;
+              nextnode->depth++;
+              nextnode->parent = curnode;
+              nextnode->state[i][j] ^= nextnode->state[i + 1][j];
+              nextnode->state[i + 1][j] ^= nextnode->state[i][j];
+              nextnode->state[i][j] ^= nextnode->state[i + 1][j];
+              str = toString(*nextnode);
               if (maps.find(str) == maps.end()) {
                 maps.insert(str);
-                vary = evaluate(nextnode);
+                vary = evaluate(*nextnode);
                 if (vary == 0) {
                   flag = true;
                   break;
                 } else {
-                  nextnode.value = nextnode.depth + vary;
-                  nodes.push(nextnode);
+                  nextnode->value = nextnode->depth + vary;
+                  nodes.push(*nextnode);
                 }
               }
             }
-            //左右交换
+
             if (j < 3) {
-              nextnode = curnode;
-              nextnode.depth++;
-              nextnode.state[i][j + 1] ^= nextnode.state[i][j];
-              nextnode.state[i][j] ^= nextnode.state[i][j + 1];
-              nextnode.state[i][j + 1] ^= nextnode.state[i][j];
-              str = toString(nextnode);
+              nextnode = new node;
+              *nextnode = *curnode;
+              nextnode->depth++;
+              nextnode->parent = curnode;
+              nextnode->state[i][j] ^= nextnode->state[i][j + 1];
+              nextnode->state[i][j + 1] ^= nextnode->state[i][j];
+              nextnode->state[i][j] ^= nextnode->state[i][j + 1];
+              str = toString(*nextnode);
               if (maps.find(str) == maps.end()) {
                 maps.insert(str);
-                vary = evaluate(nextnode);
+                vary = evaluate(*nextnode);
                 if (vary == 0) {
                   flag = true;
                   break;
                 } else {
-                  nextnode.value = nextnode.depth + vary;
-                  nodes.push(nextnode);
+                  nextnode->value = nextnode->depth + vary;
+                  nodes.push(*nextnode);
                 }
               }
             }
@@ -170,11 +178,11 @@ node AstarSearch(node start) {
     nextnode = curnode;
   }
   out << "Iteration #" << ++cnt << ":" << endl;
-  out << "Search Depth #" << nextnode.depth << endl;
-  out << "Evaluation Value :" << nextnode.value << endl;
+  out << "Search Depth #" << nextnode->depth << endl;
+  out << "Evaluation Value :" << nextnode->value << endl;
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
-      out << nextnode.state[i][j] << ' ';
+      out << nextnode->state[i][j] << ' ';
     }
     out << endl;
   }
@@ -186,22 +194,43 @@ node AstarSearch(node start) {
 
   return nextnode;
 }
+void printans(node *s) {
+  if (s == NULL) {
+    return;
+  }
+  printans(s->parent);
+
+  outans << "Step #" << s->depth << ":" << endl;
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      outans << s->state[i][j] << '\t';
+    }
+    outans << endl;
+  }
+  outans << endl;
+
+  return;
+}
 int main() {
   std::cout << "Calculating 15shuma question\n";
   std::cout << "Reading input from file testcase.txt..." << endl;
-  node start;
+  node *start = new node;
+  node *ans;
 
-  node ans;
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
-      in >> start.state[i][j];
+      in >> start->state[i][j];
     }
   }
-  start.depth = 0;
-  start.value = evaluate(start) + start.depth;
+  start->depth = 0;
+  start->value = evaluate(*start) + start->depth;
+  start->parent = NULL;
   ans = AstarSearch(start);
 
-  std::cout << "Best steps is " << ans.depth << " steps" << endl;
+  cout << "Print ans to file testcaseAns.txt" << endl;
+  printans(ans);
+
+  std::cout << "Best steps is " << ans->depth << " steps" << endl;
 
   return 0;
 }
