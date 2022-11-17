@@ -4,15 +4,23 @@
 #include <set>
 #include <string>
 using namespace std;
-ifstream in("test\\testcase.txt");
-ofstream out("test\\testcaseIeteration.txt");
-ofstream outans("test\\testcaseAns.txt");
+ifstream in("test\\testcase1.txt");            //输入测试数据
+ofstream out("test\\testcaseIeteration1.txt"); //输出搜索过程
+ofstream outans("test\\testcaseAns1.txt");     //输出答案及步骤
+//目标矩阵
 int target[4][4] = {
     {1, 2, 3, 4},
     {5, 6, 7, 8},
     {9, 10, 11, 12},
     {13, 14, 15, 0},
 };
+/*
+node节点信息:
+state:矩阵内容
+depth:搜索深度
+value:A星算法的估价函数
+*parent:记录父节点的指针，用于回溯答案
+*/
 struct node {
   int state[4][4];
   int depth;
@@ -20,6 +28,10 @@ struct node {
   node *parent;
   bool operator<(const node a) const { return this->value > a.value; }
 };
+/*
+int evaluate(node a)
+返回值：A星算法的估计函数值（节点a矩阵信息和目标矩阵不一样的数字个数）
+*/
 int evaluate(node a) {
   int cnt = 0;
   for (int i = 0; i < 4; i++) {
@@ -29,6 +41,10 @@ int evaluate(node a) {
   }
   return cnt;
 }
+/*
+string toString(node a)
+返回值：将节点a的矩阵转化成字符串，用于记录出现过的状态
+*/
 string toString(node a) {
   string str;
   for (int i = 0; i < 4; i++) {
@@ -38,6 +54,11 @@ string toString(node a) {
   }
   return str;
 }
+/*
+node *AstarSearch(node *start)
+A星算法本体
+返回值：记录答案的节点
+*/
 node *AstarSearch(node *start) {
   cout << "Astar Algorithm start" << endl;
   cout << "Print Iterations to testcaseIteration.txt files." << endl;
@@ -194,6 +215,10 @@ node *AstarSearch(node *start) {
 
   return nextnode;
 }
+/*
+void printans(node *s)
+回溯输出答案的步骤
+*/
 void printans(node *s) {
   if (s == NULL) {
     return;
@@ -211,6 +236,9 @@ void printans(node *s) {
 
   return;
 }
+/*
+主函数
+*/
 int main() {
   std::cout << "Calculating 15shuma question\n";
   std::cout << "Reading input from file testcase.txt..." << endl;
